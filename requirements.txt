@@ -1,5 +1,4 @@
-torch==2.0.1
-ultralytics
 flask
-opencv-python
+ultralytics
+opencv-python-headless
 numpy
