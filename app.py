@@ -38,7 +38,7 @@ for v in VIDEOS:
     if isinstance(v, str) and (v.startswith("http") or v.startswith("rtsp")):
         cameras.append(cv2.VideoCapture(v))
     else:
-        cameras.append(cv2.VideoCapture(v, cv2.CAP_FFMPEG))
+        cameras.append((cv2.VideoCapture(v)))
 
 # --- 🧠 AI ENGINES INITIALIZATION ---
 print("⏳ Initializing AI Engines...")
@@ -202,6 +202,7 @@ def create_ticket():
     database.add_ticket(ticket_id, data.get("type", "General Issue"), data.get("priority", "Medium"), data.get("location", "Unknown Zone"))
     return jsonify({"status": "success", "ticket": ticket_id})
 
+
 # 🚨 SOS MODE SAVES TO DB
 @app.route('/toggle_accident', methods=['POST'])
 @login_required
@@ -252,7 +253,7 @@ def chat():
     elif "excel" in user_msg or "download" in user_msg or "report" in user_msg:
         reply = "📊 EXCEL REPORT: You can download the full database log by clicking the Green 'DOWNLOAD EXCEL' button on the left sidebar."
     else:
-        reply = "🤖 I am your NOC AI. Ask about 'camera offline', 'lag', 'tickets', or 'excel download'."
+        reply = "🤖 I am your NOC AI. Ask about 'camera online', 'lag', 'tickets', or 'excel download'."
 
     return jsonify({"response": reply})
 
