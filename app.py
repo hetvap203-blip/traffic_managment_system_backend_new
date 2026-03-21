@@ -132,7 +132,7 @@ def update_logic():
 
     for i in range(4):
         current_state["lanes"][i]["signal"] = signals[i]
-        current_state["lanes"][i]["timer"] = timers[i]
+        current_state["lanes"][i]["timer"] = timers[i]  
     current_state["priority_lane"] = active_idx
 
     # 🔥 LIVE DATA LOGGING TO DATABASE (Every 5 seconds) 🔥
